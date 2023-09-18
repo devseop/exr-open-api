@@ -6,22 +6,22 @@ import styled from "@emotion/styled";
 
 function App() {
   const [data, setData] = useState<IMissingPerson[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await getData();
       setData(result.list);
-      setLoading(true);
+      setIsLoading(true);
     };
 
     fetchData();
   }, []);
 
-  if (!loading) {
+  if (!isLoading) {
     return (
       <div>
-        <p>loading...</p>
+        <h2>실종 명단을 불러오고 있습니다...</h2>
       </div>
     );
   }
